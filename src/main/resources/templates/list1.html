@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Users</title>
+</head>
+<body>
+<h1>Users</h1>
+<a href="/users/create1">Add User</a> <!-- Переход на страницу создания пользователя -->
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.id}"></td>
+    <td th:text="${user.username}"></td>
+    <td th:text="${user.email}"></td>
+    <td th:text="${user.role.name}"></td>
+    <td>
+      <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a> |
+      <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<a href="/roles/list">Go to Roles</a> <!-- Переход на список ролей -->
+<a href="/orders/list2">Go to Orders</a> <!-- Переход на список заказов -->
+</body>
+</html>

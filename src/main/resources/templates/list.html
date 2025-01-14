@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Roles</title>
+</head>
+<body>
+<h1>Roles</h1>
+<a href="/roles/create">Add Role</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="role : ${roles}">
+        <td th:text="${role.id}"></td>
+        <td th:text="${role.name}"></td>
+        <td>
+            <a th:href="@{/roles/edit/{id}(id=${role.id})}">Edit</a> |
+            <a th:href="@{/roles/delete/{id}(id=${role.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/users/list1">Go to Users</a>
+<a href="/orders/list2">Go to Orders</a>
+</body>
+</html>

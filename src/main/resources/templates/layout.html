@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Application</title>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="/roles">Roles</a> |
+    <a href="/users">Users</a> |
+    <a href="/orders">Orders</a>
+  </nav>
+</header>
+<main>
+  <div th:insert="~{::content}"></div>
+</main>
+</body>
+</html>

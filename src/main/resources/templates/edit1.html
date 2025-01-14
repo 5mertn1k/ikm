@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit User</title>
+</head>
+<body>
+<h1>Edit User</h1>
+<form th:action="@{/users/update/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <input type="text" th:field="*{username}" placeholder="Username" />
+    <input type="email" th:field="*{email}" placeholder="Email" />
+    <select th:field="*{role.id}">
+        <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
+    </select>
+    <button type="submit">Save</button>
+</form>
+
+<a href="/users/list1">Back to Users</a>
+</body>
+</html>
