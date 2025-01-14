@@ -5,7 +5,9 @@
 </head>
 <body>
 <h1>Edit User</h1>
+<!-- Форма для редактирования пользователя -->
 <form th:action="@{/users/update/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <!-- Скрытое поле для ID -->
     <input type="hidden" th:field="*{id}" />
     <input type="text" th:field="*{username}" placeholder="Username" />
     <input type="email" th:field="*{email}" placeholder="Email" />

@@ -57,6 +57,19 @@ public class UserController {
         return "edit1";
     }
 
+    // Контроллер для обновления пользователя
+    @PostMapping("/update/{id}")
+    public String updateUser(@PathVariable Long id, @ModelAttribute User user) {
+        // Получаем роль по ID, которая была передана из формы
+        Role role = roleService.findById(user.getRole().getId());
+        user.setRole(role);  // Устанавливаем роль в пользователя
+
+        // Обновляем данные пользователя в базе данных
+        user.setId(id); // Устанавливаем ID, чтобы обновить существующего пользователя
+        userService.save(user); // Сохраняем обновленные данные
+
+        return "redirect:/users/list1"; // Перенаправление на список пользователей
+    }
 
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable Long id) {
